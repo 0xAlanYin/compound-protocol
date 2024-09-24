@@ -51,6 +51,7 @@ contract ComptrollerV1Storage is UnitrollerAdminStorage {
     /**
      * @notice Per-account mapping of "assets you are in", capped by maxAssets
      */
+    // 账户资产：用户的抵押品列表会存储在 accountAssets 中。 address 就是用户的钱包地址
     mapping(address => CToken[]) public accountAssets;
 
 }
@@ -66,6 +67,7 @@ contract ComptrollerV2Storage is ComptrollerV1Storage {
         uint collateralFactorMantissa;
 
         // Per-market mapping of "accounts in this asset"
+        // 账户是否在市场中
         mapping(address => bool) accountMembership;
 
         // Whether or not this market receives COMP
@@ -76,6 +78,7 @@ contract ComptrollerV2Storage is ComptrollerV1Storage {
      * @notice Official mapping of cTokens -> Market metadata
      * @dev Used e.g. to determine if a market is supported
      */
+    // 官方支持的借贷市场 cToken地址 -> 借贷市场信息
     mapping(address => Market) public markets;
 
 
@@ -103,6 +106,7 @@ contract ComptrollerV3Storage is ComptrollerV2Storage {
     }
 
     /// @notice A list of all markets
+    // 所有市场列表
     CToken[] public allMarkets;
 
     /// @notice The rate at which the flywheel distributes COMP, per block
