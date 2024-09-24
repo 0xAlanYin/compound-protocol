@@ -28,6 +28,7 @@ contract CTokenStorage {
     uint8 public decimals;
 
     // Maximum borrow rate that can ever be applied (.0005% / block)
+    // 最大借款利率，永远不会应用 (.0005% / block)
     uint internal constant borrowRateMaxMantissa = 0.0005e16;
 
     // Maximum fraction of interest that can be set aside for reserves
@@ -46,6 +47,7 @@ contract CTokenStorage {
     /**
      * @notice Contract which oversees inter-cToken operations
      */
+    // 审核合约：监督 cToken 之间的操作
     ComptrollerInterface public comptroller;
 
     /**
@@ -64,6 +66,7 @@ contract CTokenStorage {
     /**
      * @notice Block number that interest was last accrued at
      */
+    // 记录最后一次计算利息的区块高度
     uint public accrualBlockNumber;
 
     /**
@@ -237,7 +240,8 @@ contract CErc20Storage {
     address public underlying;
 }
 
-abstract contract CErc20Interface is CErc20Storage {
+abstract contract 
+ is CErc20Storage {
 
     /*** User Interface ***/
 
@@ -260,6 +264,7 @@ contract CDelegationStorage {
     /**
      * @notice Implementation address for this contract
      */
+    // 存储实现合约地址
     address public implementation;
 }
 
@@ -284,10 +289,10 @@ abstract contract CDelegateInterface is CDelegationStorage {
      * @dev Should revert if any issues arise which make it unfit for delegation
      * @param data The encoded bytes data for any initialization
      */
-    function _becomeImplementation(bytes memory data) virtual external;
+    function _becomeImplementation(bytes memory data) virtual external; // 由委托人调用委托来初始化从而可以执行任务
 
     /**
      * @notice Called by the delegator on a delegate to forfeit its responsibility
      */
-    function _resignImplementation() virtual external;
+    function _resignImplementation() virtual external; // 被委托人要求委托人放弃实现
 }

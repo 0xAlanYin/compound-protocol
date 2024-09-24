@@ -15,7 +15,7 @@ contract ExponentialNoError {
     uint constant mantissaOne = expScale;
 
     struct Exp {
-        uint mantissa;
+        uint mantissa; // 尾数，表示一个数的小数部分
     }
 
     struct Double {

@@ -5,6 +5,7 @@ pragma solidity ^0.8.10;
  * @title ERC 20 Token Standard Interface
  *  https://eips.ethereum.org/EIPS/eip-20
  */
+// EIP20Interface 接口，定义了 ERC-20 标准接口
 interface EIP20Interface {
     function name() external view returns (string memory);
     function symbol() external view returns (string memory);
